@@ -8,7 +8,7 @@ const MainPages = () => {
 			<>Поиск треков</>
 			<div className={style.list}>
 				{tracksList.map((track) => (
-					<Track track={track} key={track.id} />
+					<Track {...track} key={track.id} />
 				))}
 			</div>
 		</div>
