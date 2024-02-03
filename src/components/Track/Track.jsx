@@ -1,6 +1,8 @@
-import style from './track.module.scss';
+import { useContext } from 'react';
+import { AudioContext } from '../../context/AudioContext';
 import { IconButton } from '@mui/material';
 import { PlayArrow } from '@mui/icons-material';
+import style from './track.module.scss';
 import secondsToMMSS from '../../utils/secondsToMMSS';
 
 const Track = (track) => {
@@ -13,12 +15,17 @@ const Track = (track) => {
 		artists,
 	} = track;
 
+	const { handleToggleAudio } =
+		useContext(AudioContext);
+
 	const formattedDuration =
 		secondsToMMSS(duration);
 
 	return (
 		<div className={style.track}>
-			<IconButton>
+			<IconButton
+				onClick={() => handleToggleAudio(track)}
+			>
 				<PlayArrow />
 			</IconButton>
 
